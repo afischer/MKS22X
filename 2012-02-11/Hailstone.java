@@ -7,6 +7,8 @@
 
 public class Hailstone{
 
+    static int nums = 0;
+
     public static int  hail(int n){
 	if (n==1){
 	    return n;
@@ -19,30 +21,47 @@ public class Hailstone{
 
     // hailLen(n_: what is the length of hail(n)
     public static int hailLen(int n){
-	int nums = 0;
-	if (n==1){
-	    return n;
-	    nums++;
+	int counter = 0;	
+
+	while (n != 1){
+
+	    if (n%2 == 1){
+		int y = 3*n+1;
+       		n = y;
+	    }
+	    else {
+		int y = n/2;
+		n = y;
+	    }
+	    counter++;
 	}
-	if (n%2 == 0){
-	    return hail(n/2);
-	    nums++;
-	}
-	return hail((3*n)+1);
-	nums++;
-	
-	return nums;
-    }
+
+	return counter;
+    } 
 
 
     // longestHail(n): what N from 1 to n has the longest sequence?
+    public static int longestHail(int n){
+	int largest = 0;
+	
+	if (n==1){
+	    return largest;
+	}
+	else {
+	    if (hailLen(n) > hailLen(largest)) {
+		largest = n;
+   	    }
+	    return longestHail(n-1);
+	}
+    }
+
 
     public static void main(String[] args){
 
-	//System.out.println(hail(2));
-	//System.out.println(hail(5));
-	//System.out.println(hail(10));
-	//System.out.println(hail(12));
+	System.out.println(hailLen(2));
+	System.out.println(hailLen(5));
+	System.out.println(hailLen(10));
+	System.out.println(longestHail(12));
 
     }
 
