@@ -13,7 +13,7 @@ toString()      - Return the grid of integers as a String.
 
 As well as the important recursive method
 
-Solve(x,y,n)    - x is starting point, y is starting y, n is board size.
+solve(x,y,n)    - x is starting point, y is starting y, n is board size.
 
 */
 
@@ -21,50 +21,61 @@ Solve(x,y,n)    - x is starting point, y is starting y, n is board size.
 public class Knight {
 
     // Variable Initialization
-    public static int board[][];
+    public static int[][] board;
     static int[] xMoves = {2,   1, 2, 1, -1, -2, -2, -1}; // THESE ARE ALL THE POSSIBLE MOVES 
     static int[] yMoves = {-1, -2, 1, 2,  2,  1, -1, -2}; // They line up by index.
     public static int moveNum = 1;  //move counter
+    public static boolean solved = false;
+
 
     //constructor to create board
     public Knight(int n){
-	int board[][] = new int[n][n];
+	board = new int[n][n];
     }
 
     public void solve(){
-	this.solver(0,0,board[0].length);
+	solve(0,0,board[0].length);
     }
 
     // - // - // - // - // - // - 
 
 
     //SOLVE METHOD
-    public static void solver(int x, int y, int n){
+    public static void solve(int x, int y, int n){
 	
-	if (moveNum == ((n * n) - 1)) { //are we done? If yeah:
-	    System.out.println(toString(board));
-	    System.out.println("Done!");
-	}
+	while (!solved){
 
-	else { //We're not done.
-	    for (int i = 0; i < 8; i++) { //try each of 8 solutions
-		if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n //move in x dir, check in bounds
-		    && (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){ //move in y dir, check in bounds
+	    if (moveNum == ((n * n) - 1)) { //are we done? If yeah:
+		System.out.println(toString(board));
+		System.out.println("Done!");
+		solved = true;
+	    }
+
+	    else { //We're not done.
+		for (int i = 0; i < 8; i++) { //try each of 8 solutions
+		    if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n        //move in x dir, check in bounds
+			&& (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){   //move in y dir, check in bounds
 		    
-		    if (board[x + xMoves[i]][y + yMoves[i]] == 0) { //If we haven't been here yet
-			board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
-			System.out.println(toString(board));           //print the board
-			moveNum++;                                     //increment move counter
-			try{Thread.sleep(20);}catch(Exception e){};
-			solver( (x + xMoves[i]), (y + yMoves[i]), n ); //recusrion step
+			if (board[x + xMoves[i]][y + yMoves[i]] == 0) {    //If we haven't been here yet
+			    board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
+			    System.out.println(toString(board));           //print the board
+			    moveNum++;                                     //increment move counter
+			    try{Thread.sleep(250);}catch(Exception e){};
+			    solve( (x + xMoves[i]), (y + yMoves[i]), n );  //recusrion step
+			
+			}
+		    }
+		    board[x //PUT THE STUFF FROM ABOVE][y] = 0; //no moves found :(
+		    moveNum--;
 		    
+
 		}
+	
+	
 	    }
 	}
-	
-	board[x][y] = 0; //no moves found :(
+	if(solved){System.exit(0);}
     }
-}
 
 
 

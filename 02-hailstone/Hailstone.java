@@ -42,16 +42,15 @@ public class Hailstone{
 
     // longestHail(n): what N from 1 to n has the longest sequence?
     public static int longestHail(int n){
-	int largest = 0;
 	
 	if (n==1){
-	    return largest;
+	    return n;
 	}
 	else {
-	    if (hailLen(n) > hailLen(largest)) {
-		largest = n;
+	    if (hailLen(n-1) > hailLen(n)) {
+		return longestHail(n-1);
    	    }
-	    return longestHail(n-1);
+	    return longestHail(n-2);
 	}
     }
 
