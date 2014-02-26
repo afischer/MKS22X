@@ -25,7 +25,7 @@ public class Hailstone{
 
 	while (n != 1){
 
-	    if (n%2 == 1){
+	    if (n % 2 == 1){
 		int y = 3*n+1;
        		n = y;
 	    }
@@ -42,25 +42,27 @@ public class Hailstone{
 
     // longestHail(n): what N from 1 to n has the longest sequence?
     public static int longestHail(int n){
-	int largest = 0;
-	
-	if (n==1){
-	    return largest;
+	return hailHelp(1, 1, n);
+    }
+
+    public static int hailHelp(int count, int longest, int n){
+	if(n==1){
+	    return longest;
 	}
-	else {
-	    if (hailLen(n) > hailLen(largest)) {
-		largest = n;
+	else{
+     
+	    if(hailLen(n) > longest){
+		return hailHelp(hailLen(n),n,n-1);
 	    }
-	    return longestHailHelper(n-1);
+	    else {
+		return hailHelp(count, longest, n-1);	
+
+	    }
 	}
+	
     }
     
-    public static int longestHailHelper(int n){
-	return longestHail(n);
-	    
-	    
-    }
-    
+        
     
     public static void main(String[] args){
 
