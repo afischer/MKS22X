@@ -60,15 +60,19 @@ public class Knight {
 			    board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
 			    System.out.println(toString(board));           //print the board
 			    moveNum++;                                     //increment move counter
-			    try{Thread.sleep(250);}catch(Exception e){};
+			    try{Thread.sleep(20);}catch(Exception e){};
 			    solve( (x + xMoves[i]), (y + yMoves[i]), n );  //recusrion step
 			
 			}
 		    }
-		    board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
-		    moveNum--;
 		    
-
+		
+		    try{
+			    board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
+			    moveNum--;		   
+		    }catch(Exception ex){}
+		    
+		
 		}
 	
 	
