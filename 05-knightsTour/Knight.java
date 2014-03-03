@@ -34,7 +34,7 @@ public class Knight {
     }
 
     public void solve(){
-	solve(0,0,board[0].length);
+	solve(1,1,board[0].length);
     }
 
     // - // - // - // - // - // - 
@@ -45,7 +45,7 @@ public class Knight {
 	
 	while (!solved){
 
-	    if (moveNum == ((n * n) - 1)) { //are we done? If yeah:
+	    if (moveNum == ((n * n))) { //are we done? If yeah:
 		System.out.println(toString(board));
 		System.out.println("Done!");
 		solved = true;
@@ -60,22 +60,23 @@ public class Knight {
 			    board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
 			    System.out.println(toString(board));           //print the board
 			    moveNum++;                                     //increment move counter
-			    try{Thread.sleep(20);}catch(Exception e){};
+			    try{Thread.sleep(250);}catch(Exception e){};
 			    solve( (x + xMoves[i]), (y + yMoves[i]), n );  //recusrion step
 			
 			}
+			
+			
+			
+			
+
 		    }
-		    
-		
 		    try{
 			    board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
 			    moveNum--;		   
-		    }catch(Exception ex){}
-		    
-		
+		    }
+		    catch (Exception ArrayIndexOutOfBoundsException){}	
 		}
-	
-	
+
 	    }
 	}
 	if(solved){System.exit(0);}
@@ -91,7 +92,7 @@ public class Knight {
 
 	for (rows = 0; rows < a.length; rows++) {
 	    for (columns = 0; columns < a[0].length; columns++ ) {
-		s = s + " " + a[rows][columns];
+		s = s + " " + a[rows][columns] + "\t";
 	    }
 	    s = s + "\n"; //newline after each row
 	}
