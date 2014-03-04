@@ -30,11 +30,48 @@ public class mergeSort{
 	    return ans;
 	}
 
+    public static void msort(int[] a){
+	if(a.length>1){
+
+	    //make two new arrays 1/2 the size of a
+	    int[] a1, a2 = new int[a.length/2];
+
+	    //copy array to the two arrays - there is a built in fxn for this
+	    for(int i=0; i<a.length/2; i++){
+		a1[i] = a[i];
+		a2[a.length-i] = a[a.length-i];
+	    }
+
+	    //msort the two arrays
+	    msort(a1);
+	    msort(a2);
+	    
+	    //ans = merge(two arrays);
+	    int[] ans = merge(a1, a2);
+	    
+	    //copy the ans to a
+	    a = ans;
+
+	}
+	else {
+	    return;
+	}
+    }
+    
 
 
 
+    
     public static void main(String[] args){
+	int[] a = new int[4];
+	int[] b = new int[1];
 
+	a[0]=5;
+	a[1]=2;
+	a[2]=44;
+	a[3]=12;
+
+	msort(a);
 
     }
 
