@@ -61,8 +61,9 @@ public class Knight {
 			    System.out.println(toString(board));           //print the board
 			    moveNum++;                                     //increment move counter
 			    try{Thread.sleep(250);}catch(Exception e){};
+			    //System.out.println(solved);
 			    solve( (x + xMoves[i]), (y + yMoves[i]), n );  //recusrion step
-			
+			    
 			}
 			
 			
@@ -70,15 +71,18 @@ public class Knight {
 			
 
 		    }
-		    try{
-			    board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
-			    moveNum--;		   
-		    }
-		    catch (Exception ArrayIndexOutOfBoundsException){}	
+	     try{
+		 board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
+		 // board[x][y] = 0; 
+		 moveNum--;		   
+	     }
+	     catch (Exception ArrayIndexOutOfBoundsException){}	
+		    
 		}
-
 	    }
+	    
 	}
+
 	if(solved){System.exit(0);}
     }
 
