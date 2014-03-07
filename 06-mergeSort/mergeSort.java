@@ -7,47 +7,32 @@ import java.util.*;
 
 public class mergeSort{
    
-    public static int[] merge(int[]a, int[]b){      //Returns sorted combined values of a&b
-      
-      
-	int[] ans = new int[a.length + b.length];
-	int i = 0, j = 0, k = 0;
-    
-      
-	while (k != ans.length){
-         
-	    if (i!=a.length && j!=b.length && a[i] < b[j]){   
-		ans[k] = a[i];
-		i++;
-		k++;
-	    }
-	    else if (j!=b.length){
-		ans[k] = b[j];
-		k++;
-		j++;         }
-	    else {
-		if (a[a.length-1]>b[b.length-1]){
-		    ans[ans.length-1]=a[a.length-1];
-		}
-		else {
-		    ans[ans.length-1]=b[b.length-1];
-		}
-		System.out.println(Arrays.toString(ans));
-		return ans;
-	    }
-	}
-	//ans[k++] = b[j++];
-      
-      
+    public static int[] merge( int[] left, int[] right) {
+        int[] ans = new int[left.length+right.length];
+	int i1 = 0;   
+        int i2 = 0;   
+        
+        for (int i = 0; i < ans.length; i++) {
+            if (i2 >= right.length || (i1 < left.length && 
+				       left[i1] <= right[i2])) {
+                ans[i] = left[i1];    // take from left
+                i1++;
+            } else {
+                ans[i] = right[i2];   // take from right
+                i2++;
+            }
+        }
 	return ans;
     }
+
    
    
     public static void msort(int[] a){
 	if(a.length>1){
 	    //exit if size is one
 	    if (a.length<2) return;
-         
+	    
+	    
 	    //make two new arrays 1/2 the size of a
 	    int[] a1 = new int[a.length/2];
 	    int[] a2 = new int[a.length - a1.length];
@@ -69,7 +54,7 @@ public class mergeSort{
 	    for (int i=0; i<a.length; i++){
 		ans[i] = a[i];
 	    }
-	    
+	    System.out.println(Arrays.toString(ans));
 	}
 	else {
 	    return;
