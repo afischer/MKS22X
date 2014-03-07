@@ -11,33 +11,24 @@ public class mergeSort{
       
       
 	int[] ans = new int[a.length + b.length];
-	int i = 0, j = 0, k = 0;
-    
-      
-	while (k != ans.length){
-         
-	    if (i!=a.length && j!=b.length && a[i] < b[j]){   
-		ans[k] = a[i];
+	int i = 0, j = 0;
+
+	for (int k =0; k<ans.length-1;k++){
+	    //while both have stuff in it, copy and compare, once it's empty, put the rest of the other in.
+
+	    
+	    if (a[i] < b[j]){
+		ans[k]=a[i];
+		//		a[i]=-1;
 		i++;
-		k++;
 	    }
-	    else if (j!=b.length){
-		ans[k] = b[j];
-		k++;
-		j++;         }
-	    else {
-		if (a[a.length-1]>b[b.length-1]){
-		    ans[ans.length-1]=a[a.length-1];
-		}
-		else {
-		    ans[ans.length-1]=b[b.length-1];
-		}
-		System.out.println(Arrays.toString(ans));
-		return ans;
+	    else{
+		ans[k]=b[j];
+		//		b[j]=-1;
+		j++;
 	    }
 	}
-	//ans[k++] = b[j++];
-      
+	
       
 	return ans;
     }
@@ -69,6 +60,7 @@ public class mergeSort{
 	    for (int i=0; i<a.length; i++){
 		ans[i] = a[i];
 	    }
+	    System.out.println(Arrays.toString(a));
 	    
 	}
 	else {
@@ -90,8 +82,7 @@ public class mergeSort{
       
 
       
-	msort(a);
-      
+	System.out.println(Arrays.toString(msort(a)));
     }
    
 }
