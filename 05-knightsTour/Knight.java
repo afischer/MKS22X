@@ -22,9 +22,9 @@ public class Knight {
 
     // Variable Initialization
     public static int[][] board;
-    static int[] xMoves = {2,   1, 2, 1, -1, -2, -2, -1}; // THESE ARE ALL THE POSSIBLE MOVES 
-    static int[] yMoves = {-1, -2, 1, 2,  2,  1, -1, -2}; // They line up by index.
-    public static int moveNum = 1;  //move counter
+    static int[] xMoves = {-2,  2,  1, 2, 1, -1, -2, -1}; // THESE ARE ALL THE POSSIBLE MOVES 
+    static int[] yMoves = {1,  -1, -2, 1, 2,  2, -1, -2}; // They line up by index.
+    public static int moveNum = 0;  //move counter
     public static boolean solved = false;
 
 
@@ -41,9 +41,9 @@ public class Knight {
 
 
     //SOLVE METHOD
-    public static void solve(int x, int y, int n){
+      public static void solve(int x, int y, int n){
 	
-	while (!solved){
+	  /*	while (!solved){
 
 	    if (moveNum == ((n * n))) { //are we done? If yeah:
 		System.out.println(toString(board));
@@ -57,37 +57,73 @@ public class Knight {
 			&& (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){   //move in y dir, check in bounds
 		    
 			if (board[x + xMoves[i]][y + yMoves[i]] == 0) {    //If we haven't been here yet
+		
 			    board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
 			    System.out.println(toString(board));           //print the board
 			    moveNum++;                                     //increment move counter
-			    try{Thread.sleep(250);}catch(Exception e){};
+			    try{Thread.sleep(1000);}catch(Exception e){};
 			    //System.out.println(solved);
-			    solve( (x + xMoves[i]), (y + yMoves[i]), n );  //recusrion step
+			    solve((x + xMoves[i]), (y + yMoves[i]), n);  //recusrion step
+			    
+			
+		   
 			    
 			}
 			
 			
-			
-			
-
+		
 		    }
-	     try{
-		 board[x + xMoves[i]][y + yMoves[i]] = 0; //no moves found :(
-		 // board[x][y] = 0; 
-		 moveNum--;		   
-	     }
-	     catch (Exception ArrayIndexOutOfBoundsException){}	
+
+		    
 		    
 		}
-	    }
+		
 	    
+
+	    }
+
+			
+			if(solved){System.exit(0);}
 	}
 
-	if(solved){System.exit(0);}
+	    board[x][y]=0;
+		moveNum--;		   
+
     }
+	
+*/
 
+	  board[x][y] = moveNum;
 
+	  if (moveNum == n*n){
+	      solved = true;
+	  }
 
+	  if (solved) {
+	      System.out.println(board[0][1]);
+	  } else {
+	      for (int i = 0; i < 8; i++) {
+		  if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n     
+		      && (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){
+		      
+		      if (board[x + xMoves[i]][y + yMoves[i]] == 0) { 
+			  
+			  board[x + xMoves[i]][y + yMoves[i]] = moveNum;
+			  // System.out.println(toString(board));          
+			  moveNum++;                                    
+			  //try{Thread.sleep(1);}catch(Exception e){};
+			  //System.out.println(solved);
+			  solve((x + xMoves[i]), (y + yMoves[i]), n);  
+		      }
+		  }
+	      }
+		  
+		  board[x][y] = 0; 
+		  moveNum--;
+	  }
+      }
+	      
+	      
     //toString method to return the grid as printable data
     public static String toString(int[][] a) {
 	String s = "";
