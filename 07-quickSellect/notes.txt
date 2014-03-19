@@ -1,0 +1,20 @@
+QuickSellect:
+
+1. Choose a partition element randomly-ish (called pivot point)
+2. Rearange the array such that all elements < the pivot point are on the left of all elements < than the pivot. Those numebrs = to pivot don't matter.
+   	    Maybe delete them for optomization?
+3. 
+
+we will need a few fxns:
+
+int quicksellect(int[]L, int k) 
+    //optionally send a copy of L to next level, if you want.
+
+int quicksellect(int[]L, int k, int left, int right) //
+
+int partition (int[]L, int left, int right){
+    // Sellect a pivot point
+    // Partition
+    // @Return the index of the pivot
+       //NOTE: We do not want to creat new arrays, so that our runtime remains O(n)
+    }

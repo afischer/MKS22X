@@ -7,7 +7,6 @@ import java.util.*;
 
 public class mergeSort{
    
-<<<<<<< HEAD
     public static int[] merge(int[]a, int[]b){      //Returns sorted combined values of a&b
       
       
@@ -17,7 +16,7 @@ public class mergeSort{
 	for (int k =0; k<ans.length-1;k++){
 	    //while both have stuff in it, copy and compare, once it's empty, put the rest of the other in.
 
-	    
+
 	    if (a[i] < b[j]){
 		ans[k]=a[i];
 		//		a[i]=-1;
@@ -29,9 +28,8 @@ public class mergeSort{
 		j++;
 	    }
 	}
-	
+
       
-=======
     public static int[] merge( int[] left, int[] right) {
         int[] ans = new int[left.length+right.length];
 	int i1 = 0;   
@@ -47,49 +45,44 @@ public class mergeSort{
                 i2++;
             }
         }
->>>>>>> 7b0e96ae316c7c6b264d15c0b8189dcf1b089352
 	return ans;
     }
 
    
    
     public static void msort(int[] a){
-	if(a.length>1){
-	    //exit if size is one
-	    if (a.length<2) return;
-	    
-	    
-	    //make two new arrays 1/2 the size of a
-	    int[] a1 = new int[a.length/2];
-	    int[] a2 = new int[a.length - a1.length];
-         
-	    //copy array to the two arrays - there is a built in fxn for this
-	    for(int i=0; i<a.length/2; i++){
-		a1[i] = a[i];
-		a2[a.length/2-1-i] = a[a.length-1-i];
-	    }
-         
-	    //msort the two arrays
-	    msort(a1);
-	    msort(a2);
-         
-	    //ans = merge(two arrays);
-	    int[] ans = merge(a1, a2);
-	    
-	    //copy the ans to a
-	    for (int i=0; i<a.length; i++){
-		ans[i] = a[i];
-	    }
-<<<<<<< HEAD
-	    System.out.println(Arrays.toString(a));
-	    
-=======
-	    System.out.println(Arrays.toString(ans));
->>>>>>> 7b0e96ae316c7c6b264d15c0b8189dcf1b089352
-	}
-	else {
-	    return;
-	}
+		if(a.length>1){
+		    //exit if size is one
+		    if (a.length<2) return;
+
+
+		    //make two new arrays 1/2 the size of a
+		    int[] a1 = new int[a.length/2];
+		    int[] a2 = new int[a.length - a1.length];
+	         
+		    //copy array to the two arrays - there is a built in fxn for this
+		    for(int i=0; i<a.length/2; i++){
+			a1[i] = a[i];
+			a2[a.length/2-1-i] = a[a.length-1-i];
+		    }
+	         
+		    //msort the two arrays
+		    msort(a1);
+		    msort(a2);
+	         
+		    //ans = merge(two arrays);
+		    int[] ans = merge(a1, a2);
+
+		    //copy the ans to a
+		    for (int i=0; i<a.length; i++){
+			ans[i] = a[i];
+		    }
+		    System.out.println(Arrays.toString(a));
+
+		}
+		else {
+		    return;
+		}
     }
    
    
