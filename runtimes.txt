@@ -1,8 +1,0 @@
-
-Let "n" be the highest polynomial.
-
-f(x) ∊ O(f(n)) ⇔ f(x) < k*f(n) for a positive constant k for all sufficently large values of n.
-
-
-Bianary search: O(logn)
-Merge sort: O(nlogn)
