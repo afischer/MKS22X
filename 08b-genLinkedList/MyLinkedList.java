@@ -14,34 +14,34 @@
 
 public class MyLinkedList {
     
-    Node Node;
-    Node head;
-
+    int length;
+    private Node<T> head = new Node();
+    
     //Constructor
     public MyLinkedList(){
 	head=null;
     }
-
-    public void add(String s, int position) { //Create a node and add it to the position location. 
-	                                             //Throw an exception if position>=length of the list.
+    
+    public void add(T s, int position) { //Create a node and add it to the position location. 
+	//Throw an exception if position>=length of the list.
        	
 	if (position>this.length()){
 	    throw new IndexOutOfBoundsException();
 	}
 	
 	Node insertpt = new Node("insertpt");
-
+	
 	insertpt.setNext(getNode(position));
 	getNode(position-1).setNext(insertpt);
     }
-    public String get(int position) { // return the string found at the indicated position
+    public T get(int position) { // return the string found at the indicated position
 	Node currNode = head;
 	for (int i=0; i<position; i++){
 	    currNode = currNode.getNext();
 	}
 	return currNode.getData();
     }
-
+    
     public Node getNode(int position){
 	return getNode(head,position);
     }
@@ -60,16 +60,12 @@ public class MyLinkedList {
     }
     
 
-    public void set(int position, String newString) {
-	getNode(position).setData(newString);
+    public void set(int position, T newData) {
+	getNode(position).setData(newData);
     }
 
     public void remove(int position) {
-	if (i<0 || 
-
-
-
-
+      
 	if (position==0){
 	    head=head.getNext();
 	}
@@ -99,7 +95,7 @@ public class MyLinkedList {
     }
 
     public String toString() {
-	return Node.getData();
+	return data;
     }
 
     
