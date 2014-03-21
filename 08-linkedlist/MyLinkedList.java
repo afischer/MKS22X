@@ -14,51 +14,80 @@
 
 public class MyLinkedList {
     
-    Node head;
+    public Node head;
 
-    public static void add(String s, int position) { //Create a node and add it to the position location. 
+    public void add(String s, int position) { //Create a node and add it to the position location. 
 	                                             //Throw an exception if position>=length of the list.
-	currNode = head;
-	Node n = new Node(s);
-
+       	
 	if (position>this.length()){
-	    throw new IndexOutOfBoundsException;
+	    throw new IndexOutOfBoundsException();
 	    System.exit(0);
 	}
 	
-	for(int i=0; i<position; i++){
+	Node insertpt = new Node();
+
+	insertpt.setNext(getNode(position));
+	getNode(position-1).setNext(insertpt);
+    }
+    public String get(int position) { // return the string found at the indicated position
+	Node currNode = head;
+	for (int i=0; i<position; i++){
 	    currNode = currNode.getNext();
 	}
-	currNode.setNext(n); //FIX THIS SO IT DOESN'T BREAK THE WHOLE LIST!!!!!!!!
-	
+	return currNode.getData();
     }
-    public static String get(int position) { // return the string found at the indicated position
 
+    public   Node getNode(int position){
+	return getNode(head,position);
     }
-    public static String set(int position, String newString) {
 
+    //recursive part of getNode
+    public   Node getNode(Node start, int position){
+	if (position<0 || position > length()-1){ 
+	    throw new Exception("Linked list Negative, index out of bounds");
+	}
+	else if (position == 0){
+	    return start;
+	}
+	else {
+	    return getNode(start.getNext(),position-1);
+	}
     }
-    public static void remove(int position) {
+    
 
+    public   String set(int position, String newString) {
+	getNode(position).setData(newString);
     }
-    public static int find(String S) {
 
+    public   void remove(int position) {
+	if (position==0){
+	    head=head.getNext();
+	}
+	getNext(position-1).setNext(getNode(position+1));
+    }
+
+    public   int find(String s) {
+	for (int i = 0; i <length(); i++){
+		    if (s.equals (getNode(i).getData())){
+			return i;
+		    }
+	}
     }
 
     //@return the number of elements stored in the linked list. 
-    public static int length() {
+    public   int length() {
 	int count = 0;
-	currNode = head;
+	Node currNode = head;
 	
-	while (n.getNext() != null){
+	while (currNode.getNext() != null){
 	    count++;
-	    n = n.getNext();
+	    currNode = currNode.getNext();
 	} 
 	return count+1; //note that last one is not counted in loop.
     }
 
-    public static String toString() {
-
+    public   String toString() {
+	
     }
 
 
