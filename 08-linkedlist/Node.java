@@ -22,18 +22,28 @@ public class Node {
 	next = null;
     }
 
-    public  String getData(){
-	return next.toString();
+    //Getters
+    public Node getNext(){
+	return next;
+    }
+
+    public String getData(){
+	return data;
+    }
+
+
+
+    //Setters
+    public void setNext(Node next){
+	this.next=next;
     }
 
     public void setData(String data){
 	this.data=data;
     }
 
-    public void setNext(Node next){
-	this.next=next;
-    }
 
+    //ToString
     public String toString(){
 	return "Data: "+data;
     }
