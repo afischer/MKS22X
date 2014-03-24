@@ -1,51 +1,31 @@
+public class Node<T> {
+    private T data;
+    private Node<T> next;
 
+    public Node (){}
 
-/*
-
-1. Node
--          Node(String s)
--Node getNext()
--String getData()
--void setData(String data)
--void setNext(Node next)
--String toString()   //Just return the data
-
-*/
-
-
-public class Node {
-    public String data;
-    public Node next;
-
-    public Node(String s){
-	this.data=s;
-	next = null;
+    public Node<T>(T s) {
+        data = s;
+        next = null;
+    }
+    
+    public void setData(T s) {
+        data = s;
     }
 
-    //Getters
-    public Node getNext(){
-	return next;
+    public T getData() {
+        return data;
+    }
+    
+    public void setNext(Node<T> n) {
+        next = n;
     }
 
-    public String getData(){
-	return data;
+    public Node<T> getNext() {
+        return next;
     }
 
-
-
-    //Setters
-    public void setNext(Node next){
-	this.next=next;
+    public String toString() {
+        return data;
     }
-
-    public void setData(String data){
-	this.data=data;
-    }
-
-
-    //ToString
-    public String toString(){
-	return "Data: "+data;
-    }
-
 }

@@ -1,123 +1,95 @@
-/*
+import java.io.*;
+import java.util.*;
 
-2. MyLinkedList  //does not handle circular lists
--void add(String s, int position) 
--String get(int position) 
--String set(int position,String newString) // change the value of the string found at the indicated position to newString
--void remove(int position)//remove the Node from that location.
--int find(String s)//return the location of the 1st occurance of s in the list, -1 if the string isn't found.
--int length() 
--String toString() //convert the list to a string in the format "[ word1 , word2 , word3]"
+public class MyLinkedList{
 
-*/
-
-
-public class MyLinkedList {
+    private Node head;
+    private int length;
     
-    Node Node;
-    Node head;
-
-    //Constructor
     public MyLinkedList(){
-	head=null;
+	head = new Node("pre-head"); 
+	length = 0;
+    }
+    
+    public String toString(){
+	String ans = "";
+	Node n = head.getNext();
+	for (int i = 0; i < length; i ++){
+	    ans += n.getData()+";";
+	    if (i < length -1)
+		n = n.getNext();    
+	}
+	return ans;
     }
 
-    public void add(String s, int position) { //Create a node and add it to the position location. 
-	                                             //Throw an exception if position>=length of the list.
-       	
-	if (position>this.length()){
-	    throw new IndexOutOfBoundsException();
-	}
-	
-	Node insertpt = new Node("insertpt");
-
-	insertpt.setNext(getNode(position));
-	getNode(position-1).setNext(insertpt);
-    }
-    public String get(int position) { // return the string found at the indicated position
-	Node currNode = head;
-	for (int i=0; i<position; i++){
-	    currNode = currNode.getNext();
-	}
-	return currNode.getData();
+    public void add (String s, int position){
+	Node n= head;
+	Node tmp = new Node(s);
+	for (int j = 0; j < position; j++)
+	    n = n.getNext();
+	tmp.setNext(n.getNext());
+	n.setNext(tmp);
+	length ++;
     }
 
-    public Node getNode(int position){
-	return getNode(head,position);
+    public int length(){
+	return length;
     }
 
-    //recursive part of getNode
-    public Node getNode(Node start, int position){
-	if (position<0 || position > length()-1){ 
-	    throw new IndexOutOfBoundsException();
+    private Node getNode(int i){
+	Node n = head;
+	for (int j = 0; j < i; j++){
+	    n = n.getNext();
 	}
-	else if (position == 0){
-	    return start;
-	}
-	else {
-	    return getNode(start.getNext(),position-1);
-	}
+	return n;
+    }
+
+    public String get(int i){
+	return getNode(i+1).getData();
+    }
+
+    public String remove(int i){
+	String ans = getNode(i+1).getData();
+	getNode(i).setNext(getNode(i).getNext().getNext());
+	length--;
+	return ans;
+    }
+
+    public String set(int i, String s){
+	Node n = getNode(i);
+	n.getNext().setData(s);
+	return n.getNext().getData();
     }
     
 
-    public void set(int position, String newString) {
-	getNode(position).setData(newString);
-    }
-
-    public void remove(int position) {
-	if (i<0 || 
-
-
-
-
-	if (position==0){
-	    head=head.getNext();
-	}
-	getNode(position-1).setNext(getNode(position+1));
-    }
-
-    public int find(String s) {
-	for (int i = 0; i <length(); i++){
-	    if (s.equals (getNode(i).getData())){
-		return i;
-	    }
-	}
-	return -1;
-	
-    }
-
-    //@return the number of elements stored in the linked list. 
-    public int length() {
-	int count = 0;
-	Node currNode = head;
-	
-	while (currNode.getNext() != null){
-	    count++;
-	    currNode = currNode.getNext();
-	} 
-	return count+1; //note that last one is not counted in loop.
-    }
-
-    public String toString() {
-	return Node.getData();
-    }
-
     
-    public static void main(String[] args) {
+    public static void wait(int a){
+	try {
+	    Thread.sleep(a);
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+    }
+    
+    
+    public static void main(String[]args){
+
 	MyLinkedList l = new MyLinkedList();
-	l.add("test",0);
-	l.add("moretest",1);
-	l.add("lesstest",0);
-	l.add("lasttest",3);
-
+	String a = new String("A");
+	String b = new String("B");
+	String c = new String("C");
+	String d = new String("D");
+	String e = new String("E");
+	
+	l.add(a,0);
+	l.add(d,1);
+	l.add(c,2);
 	System.out.println(l);
-	l.set(2,"edit");
+	l.set(1, "B");
+	System.out.println(l);
 	System.out.println(l.get(2));
-	System.out.println(l);
-	l.remove(2);
-	System.out.println(l);
-	l.remove(0);
+	System.out.println(l.remove(1));
 	System.out.println(l);
     }
-
+    
 }
