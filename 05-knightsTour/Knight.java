@@ -95,25 +95,30 @@ public class Knight {
 
 	  board[x][y] = moveNum;
 
-	  if (moveNum == n*n){
+	  if (moveNum == n*n-1){
 	      solved = true;
 	  }
 
 	  if (solved) {
-	      System.out.println(board[0][1]);
+	      System.out.println("SOLVED!");
+	      System.out.println(toString(board));
+	      System.exit(0);
 	  } else {
 	      for (int i = 0; i < 8; i++) {
 		  if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n     
-		      && (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){
+		      && //check in bounds
+		      (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){
 		      
 		      if (board[x + xMoves[i]][y + yMoves[i]] == 0) { 
 			  
 			  board[x + xMoves[i]][y + yMoves[i]] = moveNum;
-			  // System.out.println(toString(board));          
+			  x += xMoves[i];
+			  y += yMoves[i];
+			  //System.out.println(toString(board));          
 			  moveNum++;                                    
-			  //try{Thread.sleep(1);}catch(Exception e){};
+			  //try{Thread.sleep(500);}catch(Exception e){};
 			  //System.out.println(solved);
-			  solve((x + xMoves[i]), (y + yMoves[i]), n);  
+			  solve(x,y, n);  
 		      }
 		  }
 	      }

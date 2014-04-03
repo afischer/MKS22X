@@ -1,5 +1,5 @@
 
-public class Recursion {
+public class recursion {
     
     public static long fact(int n){
 	long ans=1;
