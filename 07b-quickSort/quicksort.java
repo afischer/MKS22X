@@ -16,7 +16,7 @@ public class quicksort{
       int pivIndex = partition(L, left, right);
       quicksort(L, left, pivIndex-1);
       quicksort(L, pivIndex+1, right);
-       System.out.println(Arrays.toString(L));
+      //System.out.println(Arrays.toString(L));
    }
    
    
@@ -38,7 +38,7 @@ public class quicksort{
       return front;
    }
    
-    /*  
+     
    public static void main(String[] args){
       int[] a = new int[10];
       
@@ -54,8 +54,8 @@ public class quicksort{
       a[9] = 14;
       
       quicksort(a);
-      
+      System.out.println(Arrays.toString(a));
    }
-    */
+   
    
 }
