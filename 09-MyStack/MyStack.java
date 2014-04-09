@@ -94,33 +94,6 @@ public class MyStack<E> {
 	return -1;
     }
 
-    ///////   DRIVER   ///////
-    public static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    public static Random rnd = new Random();
-    
-    public static String randomString( int len ) {
-	StringBuilder sb = new StringBuilder( len );
-	for( int i = 0; i < len; i++ ) 
-	    sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
-	return sb.toString();
-	}
-    
-    public void main(String[] args){
-	int stackSize = 100;
-	int strLen = 20;
-	
-	MyStack<E>[] test = (MyStack<E>[]) new MyStack[stackSize]; // WORK-AROUND #2
-	
-	//Fill Stack!
-	System.out.println("Adding"+ stackSize + "items to the stack...");
-	for (int i = 0; i < stackSize; i++){
-		test.push(randomString(strLen));
-	}
-	System.out.print("DONE!");
-	
-	
-	
-    }
     
 }
 
