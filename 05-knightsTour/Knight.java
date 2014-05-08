@@ -34,7 +34,7 @@ public class Knight {
     }
 
     public void solve(){
-	solve(1,1,board[0].length);
+	solve(0,0,board[0].length);
     }
 
     // - // - // - // - // - // - 
@@ -43,64 +43,21 @@ public class Knight {
     //SOLVE METHOD
       public static void solve(int x, int y, int n){
 	
-	  /*	while (!solved){
-
-	    if (moveNum == ((n * n))) { //are we done? If yeah:
-		System.out.println(toString(board));
-		System.out.println("Done!");
-		solved = true;
-	    }
-
-	    else { //We're not done.
-		for (int i = 0; i < 8; i++) { //try each of 8 solutions
-		    if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n        //move in x dir, check in bounds
-			&& (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){   //move in y dir, check in bounds
-		    
-			if (board[x + xMoves[i]][y + yMoves[i]] == 0) {    //If we haven't been here yet
-		
-			    board[x + xMoves[i]][y + yMoves[i]] = moveNum; //put down the move num
-			    System.out.println(toString(board));           //print the board
-			    moveNum++;                                     //increment move counter
-			    try{Thread.sleep(1000);}catch(Exception e){};
-			    //System.out.println(solved);
-			    solve((x + xMoves[i]), (y + yMoves[i]), n);  //recusrion step
-			    
-			
-		   
-			    
-			}
-			
-			
-		
-		    }
-
-		    
-		    
-		}
-		
-	    
-
-	    }
-
-			
-			if(solved){System.exit(0);}
-	}
-
-	    board[x][y]=0;
-		moveNum--;		   
-
-    }
-	
-*/
-
 	  board[x][y] = moveNum;
 
+<<<<<<< HEAD
+	  if (moveNum == (n*n)-1){
+=======
 	  if (moveNum == n*n-1){
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 	      solved = true;
 	  }
 
 	  if (solved) {
+<<<<<<< HEAD
+=======
 	      System.out.println("SOLVED!");
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 	      System.out.println(toString(board));
 	      System.exit(0);
 	  } else {
@@ -112,6 +69,12 @@ public class Knight {
 		      if (board[x + xMoves[i]][y + yMoves[i]] == 0) { 
 			  
 			  board[x + xMoves[i]][y + yMoves[i]] = moveNum;
+<<<<<<< HEAD
+			  //try {Thread.sleep(100);}catch(Exception ex){}
+			  // System.out.println(toString(board));          
+			  moveNum++;                                    			  
+			  solve((x + xMoves[i]), (y + yMoves[i]), n);  
+=======
 			  x += xMoves[i];
 			  y += yMoves[i];
 			  //System.out.println(toString(board));          
@@ -119,6 +82,7 @@ public class Knight {
 			  //try{Thread.sleep(500);}catch(Exception e){};
 			  //System.out.println(solved);
 			  solve(x,y, n);  
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 		      }
 		  }
 	      }
