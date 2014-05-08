@@ -10,6 +10,6 @@ public class Driver{
 	fred.insert(1);
 	fred.insert(10);
 	
-	System.out.print(fred);
+	System.out.println(fred);
     }
 }

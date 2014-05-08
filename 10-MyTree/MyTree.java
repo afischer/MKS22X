@@ -1,5 +1,6 @@
 public class MyTree {
 
+    //Internal Node Class
     public class Node {
 	private int data;
 	private int count;
@@ -45,24 +46,37 @@ public class MyTree {
 
     private Node root;
 
+    public MyTree(){
+	root = null;
+    }
+
     public void insert(int value){
 	Node temp = root;
-	while (true) {
+	Node newNode = new Node(value);
+	boolean go = true;
+
+	if (temp == null){
+	    root = newNode;
+	    go=false;
+	}
+	
+	while (go) {
 	    if(temp.getData()==value){
 		temp.increaseCount();
+		return;
 	    }
 	    else if (temp.getData() > value){
 		temp = temp.getRight();
-		if (temp.count==0){
-		    temp.setRight(new Node(value));
-		    break;
+		if (temp==null){
+		    temp = newNode;
+		    go = false;
 		}
 	    }
 	    else {
 		temp = temp.getLeft();
-		if (temp.count==0){
-		    temp.setLeft(new Node(value));
-		    break;
+		if (temp==null){
+		    temp = newNode;
+		    go = false;
 		}
 	    }
 	}
@@ -70,20 +84,34 @@ public class MyTree {
     
 
     public String toString(Node n){
+	System.out.println("Tree");
 	if (n.count==0){ return "";}
 	String data = n.getLeft().getData() + " <-- " + n.getData() + " --> " + n.getRight().getData() + "\n";
 	data += n.getLeft().getData() + "\n";
 	data += n.getRight().getData() + "\n";
 	return data;
     }
-    //Overrides
+    
     public String toString(){
 	return toString(root);
     }
 
-    //public Node find(int target){
-    
-    //}
+    public Node find(int target){
+	Node current = root;               
+	while(current.getData() != target)        
+	    {
+		if(target < current.getData()){         
+		    current = current.getLeft();
+		}
+		else{                          
+		    current = current.getRight();
+		}
+		if(current == null){            
+		    return null;     
+		}
+	    }
+	return current;                   	
+    }
 
     
 }
