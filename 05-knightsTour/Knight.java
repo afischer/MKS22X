@@ -45,25 +45,44 @@ public class Knight {
 	
 	  board[x][y] = moveNum;
 
+<<<<<<< HEAD
 	  if (moveNum == (n*n)-1){
+=======
+	  if (moveNum == n*n-1){
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 	      solved = true;
 	  }
 
 	  if (solved) {
+<<<<<<< HEAD
+=======
+	      System.out.println("SOLVED!");
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 	      System.out.println(toString(board));
 	      System.exit(0);
 	  } else {
 	      for (int i = 0; i < 8; i++) {
 		  if ((x + xMoves[i]) >= 0 && (x + xMoves[i]) < n     
-		      && (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){
+		      && //check in bounds
+		      (y + yMoves[i]) >= 0 && (y + yMoves[i]) < n){
 		      
 		      if (board[x + xMoves[i]][y + yMoves[i]] == 0) { 
 			  
 			  board[x + xMoves[i]][y + yMoves[i]] = moveNum;
+<<<<<<< HEAD
 			  //try {Thread.sleep(100);}catch(Exception ex){}
 			  // System.out.println(toString(board));          
 			  moveNum++;                                    			  
 			  solve((x + xMoves[i]), (y + yMoves[i]), n);  
+=======
+			  x += xMoves[i];
+			  y += yMoves[i];
+			  //System.out.println(toString(board));          
+			  moveNum++;                                    
+			  //try{Thread.sleep(500);}catch(Exception e){};
+			  //System.out.println(solved);
+			  solve(x,y, n);  
+>>>>>>> d32105f1cabde2a7fdca2980444f29c2651a8e4c
 		      }
 		  }
 	      }
