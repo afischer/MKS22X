@@ -1,6 +1,6 @@
 public class Driver{
     public static void main(String[] args){
-	MyTree fred = new MyTree();
+	Tree fred = new Tree();
 	
 	fred.insert(2);
 	fred.insert(5);

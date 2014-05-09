@@ -1,4 +1,4 @@
-public class MyTree {
+public class Tree {
 
     //Internal Node Class
     public class Node {
@@ -46,7 +46,7 @@ public class MyTree {
 
     private Node root;
 
-    public MyTree(){
+    public Tree(){
 	root = null;
     }
 
@@ -84,16 +84,37 @@ public class MyTree {
     
 
     public String toString(Node n){
-	System.out.println("Tree");
+	System.out.println("Tree:");
+	return toStringHelper(n);
+	
+	/*
 	if (n.count==0){ return "";}
 	String data = n.getLeft().getData() + " <-- " + n.getData() + " --> " + n.getRight().getData() + "\n";
 	data += n.getLeft().getData() + "\n";
 	data += n.getRight().getData() + "\n";
 	return data;
+	*/
     }
     
     public String toString(){
 	return toString(root);
+    }
+
+    
+    public String ans = "";
+
+    public String toStringHelper(Node current){ 
+
+
+	if (current == null){return "";}
+
+	ans += current.getLeft().getData() + "<--" + current.getData() + "-->" + current.getRight().getData();	    
+
+
+	if (current.getLeft() != null && current.getRight() != null){
+	    ans += toStringHelper(current.getLeft()) + toStringHelper(current.getRight());
+	}
+	return ans;
     }
 
     public Node find(int target){
