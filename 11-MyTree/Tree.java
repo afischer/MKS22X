@@ -1,4 +1,4 @@
-public class Tree {
+public class Tree{
 
     //Internal Node Class
     public class Node {
@@ -56,9 +56,8 @@ public class Tree {
 	boolean go = true;
 	
 	System.out.println("adding " + value);
-
 	if (temp == null){
-	    root = newNode;
+	    temp = newNode;
 	    go=false;
 	}
 	
@@ -66,7 +65,7 @@ public class Tree {
 	    if(temp.getData()==value){
 		temp.increaseCount();
 
-		//		System.out.println("temp's data is equal");
+		System.out.println("temp's data is equal");
 		return;
 	    }
 	    else if (temp.getData() > value){
@@ -74,7 +73,7 @@ public class Tree {
 		if (temp==null){
 		    temp = newNode;
 		    go = false;
-		    //	System.out.println("temp's data is less than root");
+		    System.out.println("temp's data is less than root");
 		}
 	    }
 	    else {
@@ -82,49 +81,12 @@ public class Tree {
 		if (temp==null){
 		    temp = newNode;
 		    go = false;
-		    //  System.out.println("temp's data is greater than root");
+		    System.out.println("temp's data is greater than root");
 		}
 	    }
 	}
     }
     
-    /*
-    public String toString(Node n){
-	System.out.println("Tree:");
-	return toStringHelper(n);
-	
-	/*
-	if (n.count==0){ return "";}
-	String data = n.getLeft().getData() + " <-- " + n.getData() + " --> " + n.getRight().getData() + "\n";
-	data += n.getLeft().getData() + "\n";
-	data += n.getRight().getData() + "\n";
-	return data;
-	*/
-    /*  }
-    
-    public String toString(){
-	return toString(root);
-    }
-
-    
-    public String ans = "";
-
-    public String toStringHelper(Node current){ 
-
-
-	if (current == null){return "";}
-
-	ans += current.getLeft().getData() + "<--" + current.getData() + "-->" + current.getRight().getData();	    
-
-
-	if (current.getLeft() != null && current.getRight() != null){
-	    ans += toStringHelper(current.getLeft()) + toStringHelper(current.getRight());
-	}
-	return ans;
-    }
-
-*/
-
     public String toString(){
 	return toString(root);
     }
@@ -132,18 +94,22 @@ public class Tree {
     public String toString(Node current){
 	String result = "";
 
-	System.out.println(root);
+	System.out.println(result);
 
 	if (current == null){
 	    return "";
 	}else{
-
+	    System.out.println("checking left");
 	    if (current.getLeft()!=null){
-		result += current.getLeft() + "<--";
+		result += current.getLeft().getData() + "<--";
+		current = current.getLeft();
 	    }
+	    System.out.println("checking current");
 	    result += current;
 	    if (current.getRight()!=null){
-		result += "-->" + current.getRight();
+		System.out.println("checking right");
+		result += "-->" + current.getRight().getData();
+		current = current.getRight();
 	    }
 
 	    result+= "\n";

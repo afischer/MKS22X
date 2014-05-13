@@ -20,10 +20,32 @@ public class HeapSort {
     }
 
     public void pushDown(int[] arr, int index){
-	child1;
+	/*	child1;
+	int childIndex = (index*2)+1;
+	
+	while(arr[index] < arr[childIndex]){
+	    swap(arr, index, childIndex)
+	
+	*/
 
-	int parentIndex = (index*2)+1;
-	while(arr[index] < arr[parentIndex]){
-	    swap(arr,
-	}
+	int[] tmp = heap[k];
+	int child1;
+	int child2;
+
+	for(; 2*k <= size; k = child)
+	    {
+		child = 2*k;
+		
+		if(child != size &&
+		   heap[child].compareTo(heap[child + 1]) > 0) child++;
+		
+		if(tmp.compareTo(heap[child]) > 0)  heap[k] = heap[child];
+		else
+		    break;
+	    }
+	heap[k] = tmp;
     }
+
+    }
+
+}
