@@ -54,6 +54,8 @@ public class Tree {
 	Node temp = root;
 	Node newNode = new Node(value);
 	boolean go = true;
+	
+	System.out.println("adding " + value);
 
 	if (temp == null){
 	    root = newNode;
@@ -63,6 +65,8 @@ public class Tree {
 	while (go) {
 	    if(temp.getData()==value){
 		temp.increaseCount();
+
+		//		System.out.println("temp's data is equal");
 		return;
 	    }
 	    else if (temp.getData() > value){
@@ -70,6 +74,7 @@ public class Tree {
 		if (temp==null){
 		    temp = newNode;
 		    go = false;
+		    //	System.out.println("temp's data is less than root");
 		}
 	    }
 	    else {
@@ -77,12 +82,13 @@ public class Tree {
 		if (temp==null){
 		    temp = newNode;
 		    go = false;
+		    //  System.out.println("temp's data is greater than root");
 		}
 	    }
 	}
     }
     
-
+    /*
     public String toString(Node n){
 	System.out.println("Tree:");
 	return toStringHelper(n);
@@ -94,7 +100,7 @@ public class Tree {
 	data += n.getRight().getData() + "\n";
 	return data;
 	*/
-    }
+    /*  }
     
     public String toString(){
 	return toString(root);
@@ -116,6 +122,35 @@ public class Tree {
 	}
 	return ans;
     }
+
+*/
+
+    public String toString(){
+	return toString(root);
+    }
+
+    public String toString(Node current){
+	String result = "";
+
+	System.out.println(root);
+
+	if (current == null){
+	    return "";
+	}else{
+
+	    if (current.getLeft()!=null){
+		result += current.getLeft() + "<--";
+	    }
+	    result += current;
+	    if (current.getRight()!=null){
+		result += "-->" + current.getRight();
+	    }
+
+	    result+= "\n";
+	    return result + toString(current.getLeft()) + toString(current.getRight());
+	}
+    }
+
 
     public Node find(int target){
 	Node current = root;               
